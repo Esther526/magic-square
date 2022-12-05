@@ -1,0 +1,28 @@
+            int n = 5;
+            int[,] M = new int[n, n];
+            int row = 0, col = n / 2;
+            M[row, col] = 1; //把1放在第1列的中間
+
+            for (int N = 2; N <= n * n; N++)
+            {
+               
+                row = (row - 1 + n) % n; 
+                col = (col - 1 + n) % n;
+               
+
+                if (M[row, col] != 0) //要放的 有數值
+                {
+                    row = (row + 2) % n; col = (col + 1) % n;
+                }
+                M[row, col] = N;
+            }
+
+            
+            for (int r = 0; r < n; r++)
+            {
+                for (int c = 0; c < n; c++)
+                {
+                    textBox1.AppendText(M[r, c].ToString()+"\r\n");
+                }
+               
+            }
